@@ -1,0 +1,166 @@
+/* Bootstrap CSS is imported in main.jsx */
+
+:root,
+[data-bs-theme='light'] {
+  --primary-color: #4a6c6f;
+  --secondary-color: #7fb069;
+  --accent-color: #d3c1a3;
+  --light-color: #f3f4e5;
+  --dark-color: #2c3532;
+  --body-bg: #f3f4e5;
+  --body-color: #2c3532;
+  --card-bg: #ffffff;
+  --border-color: #dee2e6;
+
+  --border-radius: 0.5rem;
+  --transition-speed: 0.3s;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+[data-bs-theme='dark'] {
+  --primary-color: #5d8589;
+  --secondary-color: #8bc576;
+  --accent-color: #e6d7c3;
+  --light-color: #2c3532;
+  --dark-color: #f3f4e5;
+  --body-bg: #1a1d20;
+  --body-color: #e9ecef;
+  --card-bg: #2c3032;
+  --border-color: #495057;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--body-bg);
+  color: var(--body-color);
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color var(--transition-speed);
+}
+
+a:hover {
+  color: var(--secondary-color);
+}
+
+/* Custom button styling */
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: #3a5c5f;
+  border-color: #3a5c5f;
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.btn-secondary:hover {
+  background-color: #6ea059;
+  border-color: #6ea059;
+}
+
+/* Custom card styling */
+.card {
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition: transform var(--transition-speed),
+    box-shadow var(--transition-speed);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Chat styling */
+.chat-container {
+  height: 70vh;
+  overflow-y: auto;
+  border-radius: var(--border-radius);
+  background-color: var(--card-bg);
+  padding: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.message {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  max-width: 80%;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.message-user {
+  background-color: var(--primary-color);
+  color: white;
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+.message-ai {
+  background-color: var(--light-color);
+  color: var(--dark-color);
+  align-self: flex-start;
+}
+
+.message-system {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #666;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  margin: 0.5rem auto;
+  text-align: center;
+  max-width: fit-content;
+  animation: fadeIn 0.3s ease-in;
+}
+
+[data-bs-theme='dark'] .message-system {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #aaa;
+}
+
+.message-summary {
+  background-color: rgba(127, 176, 105, 0.1);
+  border-left: 4px solid var(--secondary-color);
+}
+
+[data-bs-theme='dark'] .message-ai {
+  background-color: #3a3e41;
+  color: #e9ecef;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+/* Remove the default body display: flex from the Vite template */
+#root {
+  width: 100%;
+}

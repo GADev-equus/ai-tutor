@@ -1,0 +1,110 @@
+/* Custom App Styling */
+
+/* Override Bootstrap defaults with biology-themed colors */
+:root {
+  --bs-primary: var(--primary-color);
+  --bs-secondary: var(--secondary-color);
+  --bs-success: #6ebe8c;
+  --bs-info: #8ad6dc;
+  --bs-warning: #ffcd73;
+  --bs-danger: #ff7568;
+}
+
+/* Fix for root element */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Add spacing between sections */
+section {
+  margin-bottom: 2rem;
+}
+
+/* Custom container for chat content */
+.chat-wrapper {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+/* Custom styling for markdown content in AI responses */
+.markdown-content {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4,
+.markdown-content h5,
+.markdown-content h6 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.markdown-content p {
+  margin-bottom: 1rem;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.markdown-content code {
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+}
+
+.markdown-content pre {
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+}
+
+/* Add scrollbar styling for chat container */
+.chat-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.chat-container::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+.chat-container::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color);
+}
+
+/* Custom styling for exam questions and mark schemes */
+.message-exam-question {
+  background-color: #e8f4f8 !important; /* Light blue background */
+  border-left: 4px solid #4a90e2 !important; /* Blue left border */
+}
+
+.message-mark-scheme {
+  background-color: #f0f8ea !important; /* Light green background */
+  border-left: 4px solid #68c151 !important; /* Green left border */
+}
+
+.message-exam-question .badge {
+  background-color: #4a90e2 !important;
+}
+
+.message-mark-scheme .badge {
+  background-color: #68c151 !important;
+}

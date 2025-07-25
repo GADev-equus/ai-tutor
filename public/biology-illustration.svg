@@ -1,0 +1,31 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#f8f9fa"/>
+  <g transform="translate(300, 200)">
+    <!-- DNA Helix -->
+    <g stroke="#4a6c6f" stroke-width="2" fill="none">
+      <!-- Left strand -->
+      <path d="M-100,150 Q-90,100 -60,50 Q-30,0 -60,-50 Q-90,-100 -100,-150" />
+      <!-- Right strand -->
+      <path d="M100,150 Q90,100 60,50 Q30,0 60,-50 Q90,-100 100,-150" />
+      <!-- Connecting lines -->
+      <line x1="-100" y1="150" x2="100" y2="150" />
+      <line x1="-75" y1="100" x2="75" y2="100" />
+      <line x1="-60" y1="50" x2="60" y2="50" />
+      <line x1="-45" y1="0" x2="45" y2="0" />
+      <line x1="-60" y1="-50" x2="60" y2="-50" />
+      <line x1="-75" y1="-100" x2="75" y2="-100" />
+      <line x1="-100" y1="-150" x2="100" y2="-150" />
+    </g>
+    
+    <!-- Stylized Cell -->
+    <circle cx="-150" cy="0" r="80" fill="#ffffff" stroke="#7fb069" stroke-width="2" />
+    <circle cx="-150" cy="0" r="30" fill="#d3c1a3" stroke="#7fb069" stroke-width="1" />
+    <ellipse cx="-180" cy="-20" rx="15" ry="10" fill="#d3c1a3" stroke="#7fb069" stroke-width="1" />
+    <ellipse cx="-130" cy="30" rx="12" ry="8" fill="#d3c1a3" stroke="#7fb069" stroke-width="1" />
+    
+    <!-- Leaf Shape -->
+    <path d="M150,50 Q200,0 150,-50 Q120,-70 100,-50 Q80,-30 100,0 Q80,30 100,50 Z" fill="#7fb069" stroke="#4a6c6f" stroke-width="2"/>
+    <path d="M150,0 Q120,-10 100,0 Q120,10 150,0" fill="none" stroke="#4a6c6f" stroke-width="1"/>
+  </g>
+  <text x="300" y="380" font-family="Arial" font-size="16" fill="#4a6c6f" text-anchor="middle">A-Level Biology Tutor</text>
+</svg>
