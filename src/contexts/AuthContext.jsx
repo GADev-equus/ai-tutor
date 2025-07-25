@@ -1,10 +1,10 @@
 /**
- * Authentication Context for Biology Tutor Subdomain App
- * Adapted from ai-tutor for bio-tutor-client integration
+ * Authentication Context for AI Tutor Subdomain App
+ * Lightweight version focused on cookie-based authentication
  */
 
 import { createContext, useContext, useState, useEffect } from 'react';
-import { api } from '../services/api.js';
+import httpService from '../services/httpService.js';
 
 const AuthContext = createContext();
 
@@ -45,27 +45,18 @@ export const AuthProvider = ({ children }) => {
         
         // Step 2: Validate authentication (token will be sent via Authorization header)
         // Add timestamp to bypass browser cache
-        const response = await api.get(`/auth/validate-token?t=${Date.now()}`);
+        const response = await httpService.get(`/api/auth/validate-token?t=${Date.now()}`);
         
-        if (response.data.success && response.data.user) {
-          setUser(response.data.user);
+        if (response.success && response.user) {
+          setUser(response.user);
           setIsAuthenticated(true);
           console.log('✅ AI-TUTOR: Authentication successful');
         } else {
           console.log('❌ AI-TUTOR: Authentication validation failed');
-          setIsAuthenticated(false);
-          // Redirect to main site for login
-          setTimeout(() => {
-            window.location.href = import.meta.env.VITE_MAIN_DOMAIN || 'https://equussystems.co';
-          }, 2000); // 2 second delay to show the loading message
         }
       } catch (error) {
         console.error('Auth initialization failed:', error);
         setIsAuthenticated(false);
-        // Redirect to main site for login on error
-        setTimeout(() => {
-          window.location.href = import.meta.env.VITE_MAIN_DOMAIN || 'https://equussystems.co';
-        }, 2000); // 2 second delay to show the loading message
       } finally {
         setLoading(false);
       }
@@ -76,7 +67,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await api.post('/auth/logout');
+      await httpService.post('/api/auth/logout');
     } catch (error) {
       console.error('Logout error:', error);
     } finally {

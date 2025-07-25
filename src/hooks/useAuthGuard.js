@@ -1,10 +1,10 @@
 /**
- * Authentication Guard Hook for Biology Tutor
- * Checks if user is authenticated via JWT tokens and redirects if not
+ * Authentication Guard Hook for AI Tutor
+ * Checks if user is authenticated via cookies and redirects if not
  */
 
 import { useEffect, useState } from 'react';
-import { api } from '../services/api.js';
+import httpService from '../services/httpService.js';
 
 const MAIN_DOMAIN = import.meta.env.VITE_MAIN_DOMAIN || 'https://equussystems.co';
 const LOGIN_URL = `${MAIN_DOMAIN}/auth/signin`;
@@ -19,12 +19,12 @@ export default function useAuthGuard(redirectOnFailure = true) {
       try {
         setLoading(true);
         
-        // Validate token via Authorization header
-        const response = await api.get('/auth/validate-token');
+        // Validate token via cookies (cookies sent automatically)
+        const response = await httpService.get('/api/auth/validate-token');
         
-        if (response.data.success && response.data.user) {
+        if (response.success && response.user) {
           setIsAuthenticated(true);
-          setUser(response.data.user);
+          setUser(response.user);
         } else {
           setIsAuthenticated(false);
           if (redirectOnFailure) {
