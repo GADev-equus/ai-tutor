@@ -1,9 +1,9 @@
 /**
- * Authentication Guard Component for Biology Tutor
+ * Authentication Guard Component for AI Tutor
  * Protects routes and components from unauthenticated access
  */
 
-import useAuthGuard from '../hooks/useAuthGuard.js';
+import { useAuth } from '../contexts/AuthContext.jsx';
 import LoadingSpinner from './ui/LoadingSpinner.jsx';
 
 export default function AuthGuard({ 
@@ -11,7 +11,7 @@ export default function AuthGuard({
   fallback = null,
   showLoading = true 
 }) {
-  const { isAuthenticated, loading } = useAuthGuard(true);
+  const { isAuthenticated, loading } = useAuth();
 
   if (loading && showLoading) {
     return (
@@ -22,10 +22,11 @@ export default function AuthGuard({
   }
 
   if (isAuthenticated === false) {
+    // Don't redirect here - let AuthContext handle authentication and redirects
     return fallback || (
       <div className="auth-guard-unauthorized">
         <h2>Authentication Required</h2>
-        <p>Redirecting to login...</p>
+        <p>Please wait while we verify your authentication...</p>
       </div>
     );
   }

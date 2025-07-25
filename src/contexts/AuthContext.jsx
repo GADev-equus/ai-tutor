@@ -53,10 +53,19 @@ export const AuthProvider = ({ children }) => {
           console.log('✅ AI-TUTOR: Authentication successful');
         } else {
           console.log('❌ AI-TUTOR: Authentication validation failed');
+          setIsAuthenticated(false);
+          // Redirect to main site for login
+          setTimeout(() => {
+            window.location.href = import.meta.env.VITE_MAIN_DOMAIN || 'https://equussystems.co';
+          }, 2000); // 2 second delay to show the loading message
         }
       } catch (error) {
         console.error('Auth initialization failed:', error);
         setIsAuthenticated(false);
+        // Redirect to main site for login on error
+        setTimeout(() => {
+          window.location.href = import.meta.env.VITE_MAIN_DOMAIN || 'https://equussystems.co';
+        }, 2000); // 2 second delay to show the loading message
       } finally {
         setLoading(false);
       }
