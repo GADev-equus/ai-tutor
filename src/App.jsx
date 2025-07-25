@@ -20,24 +20,34 @@ function App() {
     <ThemeProvider>
       <UserPreferencesProvider>
         <AuthProvider>
-          <AuthGuard>
-            <div className="d-flex flex-column min-vh-100">
-              <Header />
+          <div className="d-flex flex-column min-vh-100">
+            <Header />
 
-              <main className="flex-grow-1">
-                <ChatProvider>
-                  <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/about" element={<AboutPage />} />
-                    <Route path="/chat" element={<ChatPage />} />
-                    <Route path="*" element={<NotFoundPage />} />
-                  </Routes>
-                </ChatProvider>
-              </main>
+            <main className="flex-grow-1">
+              <ChatProvider>
+                <Routes>
+                  {/* Public routes */}
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/about" element={<AboutPage />} />
+                  
+                  {/* Protected routes */}
+                  <Route 
+                    path="/chat" 
+                    element={
+                      <AuthGuard>
+                        <ChatPage />
+                      </AuthGuard>
+                    } 
+                  />
+                  
+                  {/* Catch all route */}
+                  <Route path="*" element={<NotFoundPage />} />
+                </Routes>
+              </ChatProvider>
+            </main>
 
-              <Footer />
-            </div>
-          </AuthGuard>
+            <Footer />
+          </div>
         </AuthProvider>
       </UserPreferencesProvider>
     </ThemeProvider>
