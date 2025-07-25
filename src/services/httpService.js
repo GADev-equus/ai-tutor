@@ -3,7 +3,7 @@
  * Configured to work with JWT cookie authentication
  */
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://equus-website-api.onrender.com';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://bio-tutor-api.onrender.com';
 
 class HttpService {
   constructor(baseURL = API_BASE_URL) {
