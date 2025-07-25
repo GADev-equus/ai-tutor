@@ -103,9 +103,9 @@ export const retrieveDocuments = async (query) => {
  */
 export const checkApiHealth = async () => {
   try {
-    // Try common health check endpoints
-    console.log('Checking API health at:', `${api.defaults.baseURL}/`);
-    const response = await api.get('/');
+    // Use the correct health check endpoint
+    console.log('Checking API health at:', `${api.defaults.baseURL}/healthz`);
+    const response = await api.get('/healthz');
     console.log('Health check response:', response.data);
     return response.data;
   } catch (error) {
